@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ProyectoAdminAviones.BL/ProyectoAdminAviones.BL.csproj" />
+  <Project Path="ProyectoAdminAviones.DA/ProyectoAdminAviones.DA.csproj" />
+  <Project Path="ProyectoAdminAviones.Model/ProyectoAdminAviones.Model.csproj" />
+  <Project Path="ProyectoAdminAviones.SI/ProyectoAdminAviones.SI.csproj" />
+</Solution>
