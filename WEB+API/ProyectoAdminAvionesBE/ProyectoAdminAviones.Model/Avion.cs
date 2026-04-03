@@ -15,9 +15,18 @@ namespace ProyectoAdminAviones.Model
         [Required(ErrorMessage = "El campo Modelo es requerido")]
         public string Modelo { get; set; }
 
+        [Required(ErrorMessage = "El campo Matrícula es requerido")]
+        public string Matricula { get; set; }
+
+        [Range(1900, 2027, ErrorMessage = "El año de fabricación no es válido")]
+        public int AnnoFabricacion { get; set; }
+
         public Estado Estado { get; set; }
 
         public int IdAerolinea { get; set; }
         public Aerolinea? Aerolinea { get; set; }
+
+        public int IdPropietario { get; set; }
+        public Propietario? Propietario { get; set; }
     }
 }

@@ -59,6 +59,20 @@ namespace ProyectoAdminAviones.SI.Controllers
             return Ok(lista);
         }
 
+        [HttpGet("ObtenerPorPropietario")]
+        public async Task<ActionResult<IEnumerable<Avion>>> ObtenerPorPropietario(int idPropietario)
+        {
+            var lista = await _admin.ObtenerPorPropietarioAsync(idPropietario);
+            return Ok(lista);
+        }
+
+        [HttpGet("ObtenerPorNombrePropietario")]
+        public async Task<ActionResult<IEnumerable<Avion>>> ObtenerPorNombrePropietario(string nombre)
+        {
+            var lista = await _admin.ObtenerPorNombrePropietarioAsync(nombre);
+            return Ok(lista);
+        }
+
         [HttpPost("Agregar")]
         public async Task<IActionResult> Agregar([FromBody] Avion avion)
         {

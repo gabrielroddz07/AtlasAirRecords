@@ -12,8 +12,19 @@ namespace ProyectoAdminAviones.Model
         [Required(ErrorMessage = "El campo Nombre es requerido")]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "El campo Telefono es requerido")]
+        [Required(ErrorMessage = "El campo Teléfono es requerido")]
         public string Telefono { get; set; }
+
+        [Required(ErrorMessage = "El campo País es requerido")]
+        public string Pais { get; set; }
+
+        [Required(ErrorMessage = "El campo Correo es requerido")]
+        [EmailAddress(ErrorMessage = "Debe ser un correo válido")]
+        public string Correo { get; set; }
+
+        [Required(ErrorMessage = "La fecha de fundación es requerida")]
+        [DataType(DataType.Date)]
+        public DateTime FechaFundacion { get; set; }
 
         public ICollection<Avion>? Aviones { get; set; }
     }

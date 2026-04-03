@@ -8,6 +8,8 @@ namespace ProyectoAdminAviones.BL
         Task<IEnumerable<Avion>> ObtenerAsync();
         Task<IEnumerable<Avion>> ObtenerPorAerolineaAsync(int idAerolinea);
         Task<IEnumerable<Avion>> ObtenerPorNombreAerolineaAsync(string nombre);
+        Task<IEnumerable<Avion>> ObtenerPorPropietarioAsync(int idPropietario);
+        Task<IEnumerable<Avion>> ObtenerPorNombrePropietarioAsync(string nombre);
         Task<IEnumerable<Avion>> ObtenerActivosAsync();
         Task<IEnumerable<Avion>> ObtenerInactivosAsync();
         Task AgregarAsync(Avion avion);

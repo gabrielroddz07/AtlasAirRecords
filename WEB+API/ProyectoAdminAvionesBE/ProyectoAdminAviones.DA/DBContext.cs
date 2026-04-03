@@ -12,6 +12,7 @@ namespace ProyectoAdminAviones.DA
 
         public DbSet<Aerolinea> Aerolineas { get; set; }
         public DbSet<Avion> Aviones { get; set; }
+        public DbSet<Propietario> Propietarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,11 @@ namespace ProyectoAdminAviones.DA
                 .HasOne(a => a.Aerolinea)
                 .WithMany(ae => ae.Aviones)
                 .HasForeignKey(a => a.IdAerolinea);
+
+            modelBuilder.Entity<Avion>()
+                .HasOne(a => a.Propietario)
+                .WithMany(p => p.Aviones)
+                .HasForeignKey(a => a.IdPropietario);
         }
     }
 }

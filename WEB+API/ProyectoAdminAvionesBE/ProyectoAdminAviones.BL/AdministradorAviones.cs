@@ -25,9 +25,20 @@ namespace ProyectoAdminAviones.BL
         {
             return await _avionRepository.ObtenerPorAerolineaAsync(idAerolinea);
         }
+
         public async Task<IEnumerable<Avion>> ObtenerPorNombreAerolineaAsync(string nombre)
         {
             return await _avionRepository.ObtenerPorNombreAerolineaAsync(nombre);
+        }
+
+        public async Task<IEnumerable<Avion>> ObtenerPorPropietarioAsync(int idPropietario)
+        {
+            return await _avionRepository.ObtenerPorPropietarioAsync(idPropietario);
+        }
+
+        public async Task<IEnumerable<Avion>> ObtenerPorNombrePropietarioAsync(string nombre)
+        {
+            return await _avionRepository.ObtenerPorNombrePropietarioAsync(nombre);
         }
 
         public async Task<IEnumerable<Avion>> ObtenerActivosAsync()
@@ -42,7 +53,6 @@ namespace ProyectoAdminAviones.BL
 
         public async Task AgregarAsync(Avion avion)
         {
-            // Al agregar, el avión siempre inicia Activo
             avion.Estado = Estado.Activo;
             await _avionRepository.AgregarAsync(avion);
         }
@@ -54,7 +64,11 @@ namespace ProyectoAdminAviones.BL
             {
                 avionAModificar.Nombre = avion.Nombre;
                 avionAModificar.Modelo = avion.Modelo;
+                avionAModificar.Matricula = avion.Matricula;
+                avionAModificar.AnnoFabricacion = avion.AnnoFabricacion;
                 avionAModificar.IdAerolinea = avion.IdAerolinea;
+                avionAModificar.IdPropietario = avion.IdPropietario;
+
                 await _avionRepository.ActualizarAsync(avionAModificar);
             }
         }

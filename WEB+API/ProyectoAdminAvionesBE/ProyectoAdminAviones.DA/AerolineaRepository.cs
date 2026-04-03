@@ -17,6 +17,7 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aerolineas
                 .Include(a => a.Aviones)
+                    .ThenInclude(av => av.Propietario)
                 .FirstOrDefaultAsync(a => a.IdAerolinea == id);
         }
 
@@ -24,6 +25,7 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aerolineas
                 .Include(a => a.Aviones)
+                    .ThenInclude(av => av.Propietario)
                 .FirstOrDefaultAsync(a => a.Nombre.ToLower() == nombre.ToLower());
         }
 
@@ -31,6 +33,7 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aerolineas
                 .Include(a => a.Aviones)
+                    .ThenInclude(av => av.Propietario)
                 .ToListAsync();
         }
 

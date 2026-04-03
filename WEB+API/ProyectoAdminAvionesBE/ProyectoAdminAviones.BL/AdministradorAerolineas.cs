@@ -40,6 +40,10 @@ namespace ProyectoAdminAviones.BL
             {
                 aerolineaAModificar.Nombre = aerolinea.Nombre;
                 aerolineaAModificar.Telefono = aerolinea.Telefono;
+                aerolineaAModificar.Pais = aerolinea.Pais;
+                aerolineaAModificar.Correo = aerolinea.Correo;
+                aerolineaAModificar.FechaFundacion = aerolinea.FechaFundacion;
+
                 await _aerolineaRepository.ActualizarAsync(aerolineaAModificar);
             }
         }

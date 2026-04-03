@@ -3,4 +3,5 @@
   <Project Path="ProyectoAdminAviones.DA/ProyectoAdminAviones.DA.csproj" />
   <Project Path="ProyectoAdminAviones.Model/ProyectoAdminAviones.Model.csproj" />
   <Project Path="ProyectoAdminAviones.SI/ProyectoAdminAviones.SI.csproj" />
+  <Project Path="ProyectoAdminAviones.UI/ProyectoAdminAviones.UI.csproj" Id="15ad1046-27a3-4898-b55b-23c5ab4d5107" />
 </Solution>

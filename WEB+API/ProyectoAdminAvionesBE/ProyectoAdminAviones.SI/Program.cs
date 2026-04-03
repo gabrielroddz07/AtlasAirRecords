@@ -62,6 +62,8 @@ builder.Services.AddScoped<IAvionRepository, AvionRepository>();
 builder.Services.AddScoped<IAdministradorAviones, AdministradorAviones>();
 builder.Services.AddScoped<IAerolineaRepository, AerolineaRepository>();
 builder.Services.AddScoped<IAdministradorAerolineas, AdministradorAerolineas>();
+builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
+builder.Services.AddScoped<IAdministradorPropietarios, AdministradorPropietarios>();
 
 // ==========================
 // CORS

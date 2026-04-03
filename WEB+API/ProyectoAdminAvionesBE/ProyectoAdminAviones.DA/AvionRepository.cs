@@ -17,6 +17,7 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aviones
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .FirstOrDefaultAsync(a => a.IdAvion == id);
         }
 
@@ -24,6 +25,7 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aviones
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .ToListAsync();
         }
 
@@ -32,6 +34,7 @@ namespace ProyectoAdminAviones.DA
             return await _context.Aviones
                 .Where(a => a.IdAerolinea == idAerolinea)
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .ToListAsync();
         }
 
@@ -39,7 +42,26 @@ namespace ProyectoAdminAviones.DA
         {
             return await _context.Aviones
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .Where(a => a.Aerolinea.Nombre.ToLower() == nombre.ToLower())
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Avion>> ObtenerPorPropietarioAsync(int idPropietario)
+        {
+            return await _context.Aviones
+                .Where(a => a.IdPropietario == idPropietario)
+                .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Avion>> ObtenerPorNombrePropietarioAsync(string nombre)
+        {
+            return await _context.Aviones
+                .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
+                .Where(a => a.Propietario.Nombre.ToLower() == nombre.ToLower())
                 .ToListAsync();
         }
 
@@ -48,6 +70,7 @@ namespace ProyectoAdminAviones.DA
             return await _context.Aviones
                 .Where(a => a.Estado == Estado.Activo)
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .ToListAsync();
         }
 
@@ -56,6 +79,7 @@ namespace ProyectoAdminAviones.DA
             return await _context.Aviones
                 .Where(a => a.Estado == Estado.Inactivo)
                 .Include(a => a.Aerolinea)
+                .Include(a => a.Propietario)
                 .ToListAsync();
         }
 
