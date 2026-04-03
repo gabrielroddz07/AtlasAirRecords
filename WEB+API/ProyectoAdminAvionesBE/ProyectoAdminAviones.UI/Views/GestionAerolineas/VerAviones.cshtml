@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ProyectoAdminAviones.Model.Avion>
+
+@{
+    ViewData["Title"] = "Aviones de la aerolínea";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="aviones-page">
+
+    <section class="page-header">
+        <div>
+            <h1>AEROLÍNEAS</h1>
+            <p>Gestiona y consulta las aerolíneas registradas en el sistema.</p>
+        </div>
+
+        <div class="page-actions">
+            <a asp-action="Detalles" asp-route-id="@ViewBag.IdAerolinea" class="btn-outline">
+                <i class="fa-solid fa-arrow-left"></i>
+                &nbsp;Volver
+            </a>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <div class="details-card">
+            <div class="form-header">
+                <h2>@ViewBag.NombreAerolinea</h2>
+                <p>
+                    A continuación se muestran las aeronaves asociadas.
+                </p>
+            </div>
+
+            <div class="table-section table-inside-card">
+                <div class="table-wrapper">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Modelo</th>
+                                <th>Matrícula</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Modelo</td>
+                                        <td>@item.Matricula</td>
+                                        <td>
+                                            @if (item.Estado == ProyectoAdminAviones.Model.Estado.Activo)
+                                            {
+                                                <span class="estado activo">Activo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="estado inactivo">Inactivo</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="empty-state">
+                                        Esta aerolínea no tiene aeronaves registradas actualmente.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>

@@ -4,7 +4,7 @@ namespace ProyectoAdminAviones.UI.Controllers
 {
     public class AtlasAirRecordsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult HomePage()
         {
             return View();
         }

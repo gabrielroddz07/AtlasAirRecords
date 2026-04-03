@@ -1,0 +1,150 @@
+﻿@model IEnumerable<ProyectoAdminAviones.Model.Avion>
+
+@{
+    ViewData["Title"] = "Aviones";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="aviones-page">
+
+    <section class="page-header">
+        <div>
+            <h1>AVIONES</h1>
+            <p>Explora, consulta y gestiona aeronaves registradas a nivel global.</p>
+        </div>
+
+        <div class="page-actions">
+            <a asp-action="Crear" class="btn">
+                <i class="fa-solid fa-plus"></i>
+                &nbsp;Registrar avión
+            </a>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <form asp-action="Index" method="get" class="search-form">
+            <input type="text"
+                   name="busqueda"
+                   value="@Context.Request.Query["busqueda"]"
+                   placeholder="Buscar por nombre, modelo o matrícula" />
+
+            <button type="submit" class="btn-outline">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                &nbsp;Buscar
+            </button>
+
+            <a asp-action="Index" class="btn-clear">
+                Limpiar
+            </a>
+        </form>
+    </section>
+
+    <section class="table-section">
+        <div class="table-wrapper">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Modelo</th>
+                        <th>Matrícula</th>
+                        <th>Estado</th>
+                        <th class="actions-column"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Modelo</td>
+                                <td>@item.Matricula</td>
+
+                                <td>
+                                    @if (item.Estado == ProyectoAdminAviones.Model.Estado.Activo)
+                                    {
+                                        <span class="estado activo">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="estado inactivo">Inactivo</span>
+                                    }
+                                </td>
+                                <td class="actions">
+                                    <a asp-action="Detalles" asp-route-id="@item.IdAvion" class="btn-action btn-details">
+                                        <i class="fa-solid fa-eye"></i>
+                                        Detalles
+                                    </a>
+
+                                    <a asp-action="Editar" asp-route-id="@item.IdAvion" class="btn-action btn-edit">
+                                        <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                    </a>
+
+                                    @if (item.Estado == ProyectoAdminAviones.Model.Estado.Activo)
+                                    {
+                                        <form asp-action="Desactivar" method="post" style="display:inline;">
+                                            <input type="hidden" name="IdAvion" value="@item.IdAvion" />
+                                            <button type="submit" class="btn-action btn-danger">
+                                            <i class="fa-solid fa-ban"></i>
+                                            Desactivar
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="Activar" method="post" style="display:inline;">
+                                            <input type="hidden" name="IdAvion" value="@item.IdAvion" />
+                                            <button type="submit" class="btn-action btn-success">
+                                                <i class="fa-solid fa-check"></i>
+                                                Activar
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                No se encontraron aviones con ese criterio de búsqueda.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>

@@ -1,0 +1,114 @@
+﻿@model ProyectoAdminAviones.Model.Avion
+
+@{
+    ViewData["Title"] = "Detalles del avión";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="aviones-page">
+
+    <section class="page-header">
+        <div>
+            <h1>AVIONES</h1>
+            <p>Explora, consulta y gestiona aeronaves registradas a nivel global.</p>
+        </div>
+
+        <div class="page-actions">
+            <a asp-action="Index" class="btn-outline">
+                <i class="fa-solid fa-arrow-left"></i>
+                &nbsp;Volver
+            </a>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <div class="details-card">
+            <div class="details-grid">
+
+                <div class="detail-item">
+                    <span class="detail-label">ID</span>
+                    <p>@Model.IdAvion</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Nombre</span>
+                    <p>@Model.Nombre</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Modelo</span>
+                    <p>@Model.Modelo</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Matrícula</span>
+                    <p>@Model.Matricula</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Año de fabricación</span>
+                    <p>@Model.AnnoFabricacion</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Estado</span>
+                    @if (Model.Estado == ProyectoAdminAviones.Model.Estado.Activo)
+                    {
+                        <span class="estado activo">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="estado inactivo">Inactivo</span>
+                    }
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Aerolínea</span>
+                    <p>@(Model.Aerolinea != null ? Model.Aerolinea.Nombre : "Sin aerolínea")</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Propietario</span>
+                    <p>@(Model.Propietario != null ? Model.Propietario.Nombre : "Sin propietario")</p>
+                </div>
+
+            </div>
+
+            <div class="details-actions">
+                <a asp-action="Editar" asp-route-id="@Model.IdAvion" class="btn-action btn-edit">
+                    <i class="fa-solid fa-pen"></i>
+                    Editar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<ProyectoAdminAviones.Model.Propietario>
+
+@{
+    ViewData["Title"] = "Propietarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="aviones-page">
+
+    <section class="page-header">
+        <div>
+            <h1>PROPIETARIOS</h1>
+            <p>Gestiona y consulta los propietarios de aeronaves registrados.</p>
+        </div>
+
+        <div class="page-actions">
+            <a asp-action="Crear" class="btn">
+                <i class="fa-solid fa-plus"></i>
+                &nbsp;Registrar propietario
+            </a>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <form asp-action="Index" method="get" class="search-form">
+            <input type="text"
+                   name="busqueda"
+                   value="@Context.Request.Query["busqueda"]"
+                   placeholder="Buscar por nombre o identificación" />
+
+            <button type="submit" class="btn-outline">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                &nbsp;Buscar
+            </button>
+
+            <a asp-action="Index" class="btn-clear">
+                Limpiar
+            </a>
+        </form>
+    </section>
+
+    <section class="table-section">
+        <div class="table-wrapper">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Identificación</th>
+                        <th>Correo</th>
+                        <th class="actions-column"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Identificacion</td>
+                                <td>@item.Correo</td>
+
+                                <td class="actions">
+                                    <a asp-action="Detalles" asp-route-id="@item.IdPropietario" class="btn-action btn-details">
+                                        <i class="fa-solid fa-eye"></i>
+                                        Detalles
+                                    </a>
+                                    <a asp-action="VerAviones" asp-route-id="@item.IdPropietario" class="btn-action btn-secondary">
+                                        <i class="fa-solid fa-plane"></i>
+                                        Aviones
+                                    </a>
+                                    <a asp-action="Editar" asp-route-id="@item.IdPropietario" class="btn-action btn-edit">
+                                        <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                No se encontraron propietarios con ese criterio de búsqueda.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>

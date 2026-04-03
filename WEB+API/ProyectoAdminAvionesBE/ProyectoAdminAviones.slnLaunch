@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "AtlasAirRecords",
+    "Projects": [
+      {
+        "Path": "ProyectoAdminAviones.SI\\ProyectoAdminAviones.SI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ProyectoAdminAviones.UI\\ProyectoAdminAviones.UI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Atlas Air Records";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+
+<div class="homepage">
+
+    <section class="hero" id="inicio">
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h2>Plataforma global de inteligencia aeronáutica</h2>
+
+            <p>
+                Centralizamos información de aeronaves, aerolíneas y propietarios
+                para ofrecer visibilidad, trazabilidad y consulta pública a nivel mundial.
+            </p>
+
+            <div class="buttons">
+                <a asp-controller="GestionAviones" asp-action="Index" class="btn">Explorar aviones</a>
+                <a asp-controller="GestionAerolineas" asp-action="Index" class="btn-outline">Explorar aerolíneas</a>
+                <a asp-controller="GestionPropietarios" asp-action="Index" class="btn-outline">Explorar propietarios</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg1">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h2>REGISTRO AÉREO GLOBAL</h2>
+            <p>
+                Información estructurada, accesible y centralizada para facilitar
+                la consulta de aeronaves en distintos países y operadores.
+            </p>
+        </div>
+    </section>
+
+    <section class="section bg2">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h2>TRAZABILIDAD Y VISIBILIDAD</h2>
+            <p>
+                Relaciona aeronaves, aerolíneas y propietarios dentro de un mismo
+                ecosistema de información para mejorar el análisis y control.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="section bg3">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h2>INTELIGENCIA AERONÁUTICA INDEPENDIENTE</h2>
+            <p>
+                Atlas Air Records es una plataforma global independiente, no vinculada a entidades gubernamentales, 
+                orientada a la consulta, análisis y visibilidad de información aeronáutica, para garantizar transparencia
+                y neutralidad.
+            </p>
+        </div>
+    </section>
+
+    
+    <section class="cards-section">
+        <div class="cards-header">
+            <h2>Explorar el sistema</h2>
+            <p>
+                Accede a los módulos principales del registro aeronáutico.
+            </p>
+        </div>
+
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>

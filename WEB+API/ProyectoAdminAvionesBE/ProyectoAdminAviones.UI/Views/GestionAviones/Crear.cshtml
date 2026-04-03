@@ -1,0 +1,122 @@
+﻿@model ProyectoAdminAviones.Model.Avion
+
+@{
+    ViewData["Title"] = "Registrar avión";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="aviones-page">
+
+    <section class="page-header">
+        <div>
+            <h1>AVIONES</h1>
+            <p>Explora, consulta y gestiona aeronaves registradas a nivel global.</p>
+        </div>
+
+        <div class="page-actions">
+            <a asp-action="Index" class="btn-outline">
+                <i class="fa-solid fa-arrow-left"></i>
+                &nbsp;Volver
+            </a>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-card">
+            <div class="form-header">
+                <h2>REGISTRO</h2>
+                <p>Introduce los datos clave para registrar la aeronave en el sistema.</p>
+            </div>
+
+            <form asp-action="Crear">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="form-label">Nombre</label>
+                        <input asp-for="Nombre" class="form-input" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Modelo" class="form-label">Modelo</label>
+                        <input asp-for="Modelo" class="form-input" />
+                        <span asp-validation-for="Modelo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Matricula" class="form-label">Matrícula</label>
+                        <input asp-for="Matricula" class="form-input" />
+                        <span asp-validation-for="Matricula" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AnnoFabricacion" class="form-label">Año de fabricación</label>
+                        <input asp-for="AnnoFabricacion" class="form-input" type="number" />
+                        <span asp-validation-for="AnnoFabricacion" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="IdAerolinea" class="form-label">ID de la aerolínea</label>
+                        <input asp-for="IdAerolinea" class="form-input" type="number" />
+                        <span asp-validation-for="IdAerolinea" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="IdPropietario" class="form-label">ID del propietario</label>
+                        <input asp-for="IdPropietario" class="form-input" type="number" />
+                        <span asp-validation-for="IdPropietario" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        &nbsp;Guardar
+                    </button>
+
+                    <a asp-action="Index" class="btn-outline">
+                        Cancelar
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards">
+            <a asp-controller="GestionAviones" asp-action="Index" class="card">
+                <i class="fa-solid fa-plane"></i>
+                <h3>Aviones</h3>
+                <p>Consulta y gestiona aeronaves registradas.</p>
+            </a>
+
+            <a asp-controller="GestionAerolineas" asp-action="Index" class="card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Aerolíneas</h3>
+                <p>Explora operadores y compañías aéreas.</p>
+            </a>
+
+            <a asp-controller="GestionPropietarios" asp-action="Index" class="card">
+                <i class="fa-solid fa-user"></i>
+                <h3>Propietarios</h3>
+                <p>Accede a información de propietarios registrados.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Atlas Air Records © 2026</p>
+    </footer>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
