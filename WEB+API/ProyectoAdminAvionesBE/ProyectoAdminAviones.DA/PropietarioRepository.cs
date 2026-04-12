@@ -4,15 +4,21 @@ using ProyectoAdminAviones.Model;
 
 namespace ProyectoAdminAviones.DA
 {
+    /// <summary>
+    /// Persistencia de propietarios: las lecturas cargan aviones y la aerolínea de cada avión
+    /// para exponer el contexto completo del titular.
+    /// </summary>
     public class PropietarioRepository : IPropietarioRepository
     {
         private readonly AdminAvionesContext _context;
 
+        /// <summary>Crea el repositorio con el contexto de base de datos inyectado.</summary>
         public PropietarioRepository(AdminAvionesContext context)
         {
             _context = context;
         }
 
+        /// <inheritdoc />
         public async Task<Propietario?> ObtenerPorIdAsync(int id)
         {
             return await _context.Propietarios
@@ -21,6 +27,7 @@ namespace ProyectoAdminAviones.DA
                 .FirstOrDefaultAsync(p => p.IdPropietario == id);
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<Propietario>> ObtenerAsync()
         {
             return await _context.Propietarios
@@ -29,12 +36,14 @@ namespace ProyectoAdminAviones.DA
                 .ToListAsync();
         }
 
+        /// <inheritdoc />
         public async Task AgregarAsync(Propietario propietario)
         {
             await _context.Propietarios.AddAsync(propietario);
             await _context.SaveChangesAsync();
         }
 
+        /// <inheritdoc />
         public async Task ActualizarAsync(Propietario propietario)
         {
             _context.Propietarios.Update(propietario);
