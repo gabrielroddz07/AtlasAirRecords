@@ -1,3 +1,7 @@
+/*
+ * ProyectoAdminAviones.SI capa de servicio de integracion (API web).
+ * Expone controladores REST sobre aviones, aerolineas y propietarios, 
+ */
 using ProyectoAdminAviones.SI;
 using ProyectoAdminAviones.DA;
 using ProyectoAdminAviones.BL;
@@ -6,9 +10,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ==========================
-// Servicios del contenedor
-// ==========================
+// Registro de controladores y serializacion JSON 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -16,13 +18,11 @@ builder.Services.AddControllers()
             System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
 
-// Swagger / OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "API Administración de Aviones", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "API Administraciï¿½n de Aviones", Version = "v1" });
 
-    // Definición de API Key
     c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
     {
         Description = "Clave de API en el header: X-API-KEY",
@@ -32,7 +32,6 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "ApiKeyScheme"
     });
 
-    // Requerimiento de seguridad
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -49,15 +48,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// ==========================
-// Entity Framework InMemory
-// ==========================
+// Almacenamiento en memoria (util para pruebas)
 builder.Services.AddDbContext<AdminAvionesContext>(options =>
     options.UseInMemoryDatabase("AdminAvionesDB"));
 
-// ==========================
-// Inyección de dependencias
-// ==========================
+// Repositorios y servicios de negocio con alcance por peticion.
 builder.Services.AddScoped<IAvionRepository, AvionRepository>();
 builder.Services.AddScoped<IAdministradorAviones, AdministradorAviones>();
 builder.Services.AddScoped<IAerolineaRepository, AerolineaRepository>();
@@ -65,9 +60,7 @@ builder.Services.AddScoped<IAdministradorAerolineas, AdministradorAerolineas>();
 builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
 builder.Services.AddScoped<IAdministradorPropietarios, AdministradorPropietarios>();
 
-// ==========================
-// CORS
-// ==========================
+// CORS permisivo para consumo desde frontends durante el desarrollo.
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -76,9 +69,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ==========================
-// Middleware
-// ==========================
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -86,7 +76,7 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// Middleware de API Key
+// Comprueba X-API-KEY antes de llegar a los controladores.
 app.UseMiddleware<ApiKeyMiddleware>();
 
 app.MapControllers();

@@ -4,17 +4,23 @@ using ProyectoAdminAviones.Model;
 
 namespace ProyectoAdminAviones.SI.Controllers
 {
+    /// <summary>
+    /// API REST para aerolíneas: listado, búsqueda por id o nombre y operaciones de alta y edición.
+    /// Las respuestas pueden incluir aviones y propietarios según lo resuelva la capa de datos.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ServicioAerolineasController : ControllerBase
     {
         private readonly IAdministradorAerolineas _admin;
 
+        /// <summary>Inyecta el servicio de negocio de aerolíneas.</summary>
         public ServicioAerolineasController(IAdministradorAerolineas admin)
         {
             _admin = admin;
         }
 
+        /// <summary>Lista todas las aerolíneas.</summary>
         [HttpGet("Obtener")]
         public async Task<ActionResult<IEnumerable<Aerolinea>>> Obtener()
         {
@@ -22,6 +28,7 @@ namespace ProyectoAdminAviones.SI.Controllers
             return Ok(lista);
         }
 
+        /// <summary>Obtiene una aerolínea por id; 404 si no existe.</summary>
         [HttpGet("ObtenerPorId")]
         public async Task<ActionResult<Aerolinea>> ObtenerPorId(int id)
         {
@@ -31,6 +38,7 @@ namespace ProyectoAdminAviones.SI.Controllers
             return Ok(aerolinea);
         }
 
+        /// <summary>Busca una aerolínea por nombre exacto (sin distinguir mayúsculas).</summary>
         [HttpGet("ObtenerPorNombre")]
         public async Task<ActionResult<Aerolinea>> ObtenerPorNombre(string nombre)
         {
@@ -40,6 +48,7 @@ namespace ProyectoAdminAviones.SI.Controllers
             return Ok(aerolinea);
         }
 
+        /// <summary>Registra una aerolínea nueva.</summary>
         [HttpPost("Agregar")]
         public async Task<IActionResult> Agregar([FromBody] Aerolinea aerolinea)
         {
@@ -47,6 +56,7 @@ namespace ProyectoAdminAviones.SI.Controllers
             return Ok();
         }
 
+        /// <summary>Actualiza los datos de una aerolínea existente.</summary>
         [HttpPut("Editar")]
         public async Task<IActionResult> Editar([FromBody] Aerolinea aerolinea)
         {
