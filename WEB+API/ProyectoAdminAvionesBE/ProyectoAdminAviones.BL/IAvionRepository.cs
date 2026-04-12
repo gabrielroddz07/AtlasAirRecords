@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Abstrae el acceso a datos de aviones: consultas con filtros por aerolínea, propietario
+    /// DA para aviones: consultas con filtros por aerolínea, propietario
     /// y estado, más persistencia y actualización del estado activo/inactivo.
     /// </summary>
     public interface IAvionRepository

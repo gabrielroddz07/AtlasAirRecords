@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Contrato de persistencia para aerolíneas: lectura con aviones anidados y operaciones de escritura.
+    /// DA para aerolíneas: lectura con aviones anidados y operaciones de escritura.
     /// </summary>
     public interface IAerolineaRepository
     {

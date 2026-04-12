@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Contrato de la lógica de negocio sobre aviones: consultas por aerolínea, propietario,
+    /// BL para aviones: consultas por aerolínea, propietario,
     /// estado y operaciones de alta, edición y cambio de estado.
     /// </summary>
     public interface IAdministradorAviones

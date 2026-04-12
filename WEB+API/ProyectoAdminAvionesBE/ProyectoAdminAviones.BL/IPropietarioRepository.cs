@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Contrato de persistencia para propietarios: consultas con aviones y aerolínea asociada.
+    /// DA para propietarios: consultas con aviones y aerolínea asociada.
     /// </summary>
     public interface IPropietarioRepository
     {

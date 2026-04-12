@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Contrato de negocio para propietarios: consulta individual y listado,
+    /// BL para propietarios: consulta individual y listado,
     /// alta y actualización de datos personales de contacto.
     /// </summary>
     public interface IAdministradorPropietarios

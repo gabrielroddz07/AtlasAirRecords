@@ -3,7 +3,7 @@
 namespace ProyectoAdminAviones.BL
 {
     /// <summary>
-    /// Implementación del caso de uso de aerolíneas: lee y escribe a través del repositorio
+    /// Implementacion de <see cref="IAdministradorAerolineas">: lee y escribe a través del repositorio
     /// y, al editar, vuelca los campos sobre la entidad ya persistida para no perder relaciones.
     /// </summary>
     public class AdministradorAerolineas : IAdministradorAerolineas
