@@ -18,7 +18,7 @@ namespace ProyectoAdminAviones.DA
             _context = context;
         }
 
-        /// <inheritdoc />
+        /// <summary>Obtiene un propietario por id con sus aviones y datos de propietario.</summary>
         public async Task<Propietario?> ObtenerPorIdAsync(int id)
         {
             return await _context.Propietarios
@@ -27,7 +27,7 @@ namespace ProyectoAdminAviones.DA
                 .FirstOrDefaultAsync(p => p.IdPropietario == id);
         }
 
-        /// <inheritdoc />
+        /// <summary>Obtiene todos los propietarios con sus aviones y datos de propietario.</summary>
         public async Task<IEnumerable<Propietario>> ObtenerAsync()
         {
             return await _context.Propietarios
@@ -36,14 +36,14 @@ namespace ProyectoAdminAviones.DA
                 .ToListAsync();
         }
 
-        /// <inheritdoc />
+        /// <summary>Agrega un nuevo propietario.</summary>
         public async Task AgregarAsync(Propietario propietario)
         {
             await _context.Propietarios.AddAsync(propietario);
             await _context.SaveChangesAsync();
         }
 
-        /// <inheritdoc />
+        /// <summary>Actualiza un propietario existente.</summary>
         public async Task ActualizarAsync(Propietario propietario)
         {
             _context.Propietarios.Update(propietario);

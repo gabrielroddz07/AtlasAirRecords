@@ -5,7 +5,7 @@ using ProyectoAdminAviones.Model;
 namespace ProyectoAdminAviones.DA
 {
     /// <summary>
-    /// Persistencia de aerolíneas: al leer, incluye aviones y el propietario de cada avión
+    /// Implementacion de <see cref="IAerolineaRepository">: al leer, incluye aviones y el propietario de cada avión
     /// para devolver grafos útiles en una sola consulta.
     /// </summary>
     public class AerolineaRepository : IAerolineaRepository
