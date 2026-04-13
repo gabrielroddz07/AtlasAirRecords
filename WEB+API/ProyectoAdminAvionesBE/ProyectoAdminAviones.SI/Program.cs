@@ -21,7 +21,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "API Administraci�n de Aviones", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "API Administracion de Aviones", Version = "v1" });
 
     c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
     {
