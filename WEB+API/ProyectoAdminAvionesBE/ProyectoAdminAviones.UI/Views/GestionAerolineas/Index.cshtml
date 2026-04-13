@@ -24,6 +24,7 @@
         </div>
     </section>
 
+    <!-- Formulario de búsqueda para filtrar aerolíneas por nombre, país o correo. -->
     <section class="search-section">
         <form asp-action="Index" method="get" class="search-form">
             <input type="text"
@@ -42,6 +43,7 @@
         </form>
     </section>
 
+    <!-- Tabla de listado vinculada a la colección de aerolíneas recibida en el modelo. -->
     <section class="table-section">
         <div class="table-wrapper">
             <table class="modern-table">
@@ -63,6 +65,7 @@
                                 <td>@item.Pais</td>
                                 <td>@item.Correo</td>
 
+                                <!-- Acciones disponibles para cada aerolínea listada. -->
                                 <td class="actions">
                                     <a asp-action="Detalles" asp-route-id="@item.IdAerolinea" class="btn-action btn-details">
                                         <i class="fa-solid fa-eye"></i>
@@ -84,6 +87,7 @@
                     }
                     else
                     {
+                        <!-- Mensaje mostrado cuando no existen resultados para la búsqueda actual. -->
                         <tr>
                             <td colspan="4" class="empty-state">
                                 No se encontraron aerolíneas con ese criterio de búsqueda.

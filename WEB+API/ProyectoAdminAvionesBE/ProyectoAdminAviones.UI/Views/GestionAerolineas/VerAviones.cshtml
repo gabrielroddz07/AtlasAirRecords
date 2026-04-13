@@ -23,6 +23,7 @@
         </div>
     </section>
 
+    <!-- Vista que muestra los aviones asociados a la aerolínea seleccionada. -->
     <section class="details-section">
         <div class="details-card">
             <div class="form-header">
@@ -32,6 +33,7 @@
                 </p>
             </div>
 
+            <!-- Tabla de listado vinculada a la colección de aviones recibida en el modelo. -->
             <div class="table-section table-inside-card">
                 <div class="table-wrapper">
                     <table class="modern-table">
@@ -53,6 +55,7 @@
                                         <td>@item.Modelo</td>
                                         <td>@item.Matricula</td>
                                         <td>
+                                            <!-- Representación visual del estado actual de cada avión. -->
                                             @if (item.Estado == ProyectoAdminAviones.Model.Estado.Activo)
                                             {
                                                 <span class="estado activo">Activo</span>
@@ -67,6 +70,7 @@
                             }
                             else
                             {
+                                <!-- Mensaje mostrado cuando la aerolínea no tiene aviones registrados. -->
                                 <tr>
                                     <td colspan="4" class="empty-state">
                                         Esta aerolínea no tiene aeronaves registradas actualmente.

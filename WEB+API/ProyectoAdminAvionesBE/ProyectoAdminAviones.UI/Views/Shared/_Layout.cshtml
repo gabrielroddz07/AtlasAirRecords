@@ -13,6 +13,7 @@
 
 <body>
 
+    <!-- Barra de navegación principal compartida entre las vistas del sistema. -->
     <header class="navbar">
         <a asp-controller="Home" asp-action="Index" class="logo-link">
             <img src="~/img/atlas-logo-white.png" alt="Atlas Air Records" class="logo-img" />
@@ -26,10 +27,12 @@
         </nav>
     </header>
 
+    <!-- Contenedor principal donde se renderiza el contenido dinámico de cada vista. -->
     <main role="main">
         @RenderBody()
     </main>
 
+    <!-- Scripts base compartidos y punto de extensión para scripts específicos por vista. -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

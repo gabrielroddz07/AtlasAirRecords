@@ -2,10 +2,13 @@
     ViewData["Title"] = "Atlas Air Records";
 }
 
+<!-- Hoja de estilos principal que define el diseño global de la página. -->
 <link rel="stylesheet" href="~/css/homepage.css" />
 
+<!-- Página principal del sistema. -->
 <div class="homepage">
 
+    <!-- Sección principal de presentación. -->
     <section class="hero" id="inicio">
         <div class="overlay"></div>
 
@@ -18,6 +21,7 @@
                 para ofrecer visibilidad, trazabilidad y consulta pública a nivel mundial.
             </p>
 
+            <!-- Botones de navegación hacia los módulos principales. -->
             <div class="buttons">
                 <a asp-controller="GestionAviones" asp-action="Index" class="btn">Explorar aviones</a>
                 <a asp-controller="GestionAerolineas" asp-action="Index" class="btn-outline">Explorar aerolíneas</a>
@@ -26,6 +30,7 @@
         </div>
     </section>
 
+    <!-- Sección informativa sobre el registro aéreo. -->
     <section class="section bg1">
         <div class="overlay"></div>
 
@@ -38,6 +43,7 @@
         </div>
     </section>
 
+    <!-- Sección sobre trazabilidad y relación de datos. -->
     <section class="section bg2">
         <div class="overlay"></div>
 
@@ -50,7 +56,7 @@
         </div>
     </section>
 
-
+    <!-- Sección de enfoque e independencia de la plataforma. -->
     <section class="section bg3">
         <div class="overlay"></div>
 
@@ -64,7 +70,7 @@
         </div>
     </section>
 
-    
+    <!-- Sección de acceso rápido a módulos del sistema. -->
     <section class="cards-section">
         <div class="cards-header">
             <h2>Explorar el sistema</h2>
@@ -73,6 +79,7 @@
             </p>
         </div>
 
+        <!-- Tarjetas de navegación hacia funcionalidades principales. -->
         <div class="cards">
             <a asp-controller="GestionAviones" asp-action="Index" class="card">
                 <i class="fa-solid fa-plane"></i>
@@ -94,6 +101,7 @@
         </div>
     </section>
 
+    <!-- Pie de página del sistema. -->
     <footer class="footer">
         <p>Atlas Air Records © 2026</p>
     </footer>

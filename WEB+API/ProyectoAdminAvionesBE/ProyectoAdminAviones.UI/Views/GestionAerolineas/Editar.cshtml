@@ -23,6 +23,7 @@
         </div>
     </section>
 
+    <!-- Formulario de edición vinculado al modelo Aerolinea. -->
     <section class="form-section">
         <div class="form-card">
             <div class="form-header">
@@ -32,10 +33,13 @@
 
             <form asp-action="Editar">
 
+                <!-- Resumen de errores de validación del modelo. -->
                 <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
 
+                <!-- Identificador oculto necesario para actualizar la entidad. -->
                 <input asp-for="IdAerolinea" type="hidden" />
 
+                <!-- Estructura de campos editables vinculados al modelo. -->
                 <div class="form-grid">
 
                     <div class="form-group">
@@ -119,5 +123,6 @@
 </div>
 
 @section Scripts {
+    <!-- Scripts de validación del lado del cliente para el modelo. -->
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

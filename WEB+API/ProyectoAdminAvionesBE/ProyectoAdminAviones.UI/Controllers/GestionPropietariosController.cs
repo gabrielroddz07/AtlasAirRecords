@@ -3,9 +3,18 @@ using ProyectoAdminAviones.Model;
 
 namespace ProyectoAdminAviones.UI.Controllers
 {
+    /// <summary>
+    /// Gestiona las operaciones relacionadas con propietarios en la interfaz de usuario,
+    /// permite consultar, buscar, visualizar detalles, crear, editar y listar aviones asociados.
+    /// </summary>
     public class GestionPropietariosController(ServicioApi servicioApis) : Controller
     {
         // GET: GestionPropietariosController/0
+
+        /// <summary>
+        /// Obtiene la lista de propietarios y permite filtrarlos por criterios de búsqueda
+        /// como nombre o identificación.
+        /// </summary>
         public async Task<ActionResult> Index(string busqueda)
         {
             List<Propietario> listaDePropietarios = await servicioApis.ObtenerPropietariosAsync();
@@ -23,6 +32,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionPropietariosController/Detalles/0
+
+        /// <summary>Obtiene los detalles de un propietario específico por id.</summary>
         public async Task<ActionResult> Detalles(int id)
         {
             Propietario propietario = await servicioApis.ObtenerPropietarioPorIdAsync(id);
@@ -30,12 +41,16 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionPropietariosController/Crear/0
+
+        /// <summary>Retorna la vista para crear un nuevo propietario.</summary>
         public ActionResult Crear()
         {
             return View();
         }
 
         // POST: GestionPropietariosController/Crear/0
+
+        /// <summary>Agrega un nuevo propietario y redirige al listado principal.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Crear(Propietario propietario)
@@ -52,6 +67,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionPropietariosController/Editar/0
+
+        /// <summary>Obtiene un propietario por id para su edición.</summary>
         public async Task<ActionResult> Editar(int id)
         {
             Propietario propietario = await servicioApis.ObtenerPropietarioPorIdAsync(id);
@@ -59,6 +76,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // POST: GestionPropietariosController/Editar/0
+
+        /// <summary>Actualiza un propietario existente y redirige a la vista de detalles.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(Propietario propietario)
@@ -75,6 +94,11 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionPropietariosController/VerAviones/0
+
+        /// <summary>
+        /// Obtiene la lista de aviones asociados a un propietario específico
+        /// y envía información adicional a la vista mediante ViewBag.
+        /// </summary>
         public async Task<ActionResult> VerAviones(int id)
         {
             Propietario propietario = await servicioApis.ObtenerPropietarioPorIdAsync(id);

@@ -23,8 +23,11 @@
         </div>
     </section>
 
+    <!-- Vista de detalle vinculada al modelo Avion. -->
     <section class="details-section">
         <div class="details-card">
+
+            <!-- Estructura de presentación de atributos del modelo y sus relaciones. -->
             <div class="details-grid">
 
                 <div class="detail-item">
@@ -54,6 +57,7 @@
 
                 <div class="detail-item">
                     <span class="detail-label">Estado</span>
+                    <!-- Representación visual del estado actual del avión. -->
                     @if (Model.Estado == ProyectoAdminAviones.Model.Estado.Activo)
                     {
                         <span class="estado activo">Activo</span>
@@ -76,6 +80,7 @@
 
             </div>
 
+            <!-- Acción disponible sobre la entidad mostrada. -->
             <div class="details-actions">
                 <a asp-action="Editar" asp-route-id="@Model.IdAvion" class="btn-action btn-edit">
                     <i class="fa-solid fa-pen"></i>

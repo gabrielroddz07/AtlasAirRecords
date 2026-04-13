@@ -23,6 +23,7 @@
         </div>
     </section>
 
+    <!-- Formulario de edición con persistencia de datos existentes del modelo. -->
     <section class="form-section">
         <div class="form-card">
             <div class="form-header">
@@ -32,11 +33,14 @@
 
             <form asp-action="Editar">
 
+                <!-- Validaciones del modelo en tiempo de ejecución. -->
                 <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
 
+                <!-- Campos ocultos necesarios para mantener identidad y estado. -->
                 <input asp-for="IdAvion" type="hidden" />
                 <input asp-for="Estado" type="hidden" />
 
+                <!-- Estructura de edición enlazada directamente al modelo Avion. -->
                 <div class="form-grid">
 
                     <div class="form-group">
@@ -70,6 +74,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Estado</label>
+                        <!-- Representación visual del estado sin permitir edición directa. -->
                         @if (Model.Estado == ProyectoAdminAviones.Model.Estado.Activo)
                         {
                             <div class="form-status">
@@ -142,5 +147,6 @@
 </div>
 
 @section Scripts {
+    <!-- Scripts de validación para asegurar integridad de datos en el cliente. -->
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

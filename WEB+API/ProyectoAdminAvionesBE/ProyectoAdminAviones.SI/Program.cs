@@ -1,6 +1,6 @@
 /*
  * ProyectoAdminAviones.SI capa de servicio de integracion (API web).
- * Expone controladores REST sobre aviones, aerolineas y propietarios, 
+ * Expone controladores REST sobre aviones, aerolineas y propietarios.
  */
 using ProyectoAdminAviones.SI;
 using ProyectoAdminAviones.DA;
@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registro de controladores y serializacion JSON 
+// Registro de controladores y serializacion JSON.
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Almacenamiento en memoria (util para pruebas)
+// Almacenamiento en memoria (util para pruebas).
 builder.Services.AddDbContext<AdminAvionesContext>(options =>
     options.UseInMemoryDatabase("AdminAvionesDB"));
 

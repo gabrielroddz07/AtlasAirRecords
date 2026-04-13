@@ -4,10 +4,16 @@ using System.Text;
 
 namespace ProyectoAdminAviones.UI
 {
+    /// <summary>
+    /// Centraliza la comunicación de la capa UI con la API de administración de aviones,
+    /// realiza solicitudes HTTP para consultar, agregar, editar y cambiar estado de aviones,
+    /// así como gestionar aerolíneas y propietarios.
+    /// </summary>
     public class ServicioApi
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
+        /// <summary>Crea el servicio con la fábrica de clientes HTTP inyectada.</summary>
         public ServicioApi(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
@@ -15,6 +21,7 @@ namespace ProyectoAdminAviones.UI
 
         // Aviones
 
+        /// <summary>Obtiene la lista de todos los aviones.</summary>
         public async Task<List<Avion>> ObtenerAvionesAsync()
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -25,6 +32,7 @@ namespace ProyectoAdminAviones.UI
             return lista;
         }
 
+        /// <summary>Obtiene un avión por id.</summary>
         public async Task<Avion?> ObtenerAvionPorIdAsync(int id)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -38,6 +46,7 @@ namespace ProyectoAdminAviones.UI
             return null;
         }
 
+        /// <summary>Obtiene todos los aviones de una aerolínea específica.</summary>
         public async Task<List<Avion>> ObtenerAvionesPorAerolineaAsync(int idAerolinea)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -48,6 +57,7 @@ namespace ProyectoAdminAviones.UI
             return lista;
         }
 
+        /// <summary>Obtiene todos los aviones de un propietario específico.</summary>
         public async Task<List<Avion>> ObtenerAvionesPorPropietarioAsync(int idPropietario)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -58,6 +68,7 @@ namespace ProyectoAdminAviones.UI
             return lista;
         }
 
+        /// <summary>Agrega un nuevo avión por medio de la API.</summary>
         public async Task AgregarAvionAsync(Avion avion)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -67,6 +78,7 @@ namespace ProyectoAdminAviones.UI
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>Actualiza un avión existente por medio de la API.</summary>
         public async Task EditarAvionAsync(Avion avion)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -76,6 +88,7 @@ namespace ProyectoAdminAviones.UI
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>Activa un avión por id.</summary>
         public async Task ActivarAvionAsync(int id)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -83,6 +96,7 @@ namespace ProyectoAdminAviones.UI
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>Desactiva un avión por id.</summary>
         public async Task DesactivarAvionAsync(int id)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -92,6 +106,7 @@ namespace ProyectoAdminAviones.UI
 
         // Aerolineas
 
+        /// <summary>Obtiene la lista de todas las aerolíneas.</summary>
         public async Task<List<Aerolinea>> ObtenerAerolineasAsync()
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -102,6 +117,7 @@ namespace ProyectoAdminAviones.UI
             return lista;
         }
 
+        /// <summary>Obtiene una aerolínea por id.</summary>
         public async Task<Aerolinea?> ObtenerAerolineaPorIdAsync(int id)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -115,6 +131,7 @@ namespace ProyectoAdminAviones.UI
             return null;
         }
 
+        /// <summary>Obtiene una aerolínea por nombre.</summary>
         public async Task<Aerolinea?> ObtenerAerolineaPorNombreAsync(string nombre)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -128,6 +145,7 @@ namespace ProyectoAdminAviones.UI
             return null;
         }
 
+        /// <summary>Agrega una nueva aerolínea por medio de la API.</summary>
         public async Task AgregarAerolineaAsync(Aerolinea aerolinea)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -137,6 +155,7 @@ namespace ProyectoAdminAviones.UI
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>Actualiza una aerolínea existente por medio de la API.</summary>
         public async Task EditarAerolineaAsync(Aerolinea aerolinea)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -148,6 +167,7 @@ namespace ProyectoAdminAviones.UI
 
         // Propietarios
 
+        /// <summary>Obtiene la lista de todos los propietarios.</summary>
         public async Task<List<Propietario>> ObtenerPropietariosAsync()
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -158,6 +178,7 @@ namespace ProyectoAdminAviones.UI
             return lista;
         }
 
+        /// <summary>Obtiene un propietario por id.</summary>
         public async Task<Propietario?> ObtenerPropietarioPorIdAsync(int id)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -171,6 +192,7 @@ namespace ProyectoAdminAviones.UI
             return null;
         }
 
+        /// <summary>Agrega un nuevo propietario por medio de la API.</summary>
         public async Task AgregarPropietarioAsync(Propietario propietario)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");
@@ -180,6 +202,7 @@ namespace ProyectoAdminAviones.UI
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>Actualiza un propietario existente por medio de la API.</summary>
         public async Task EditarPropietarioAsync(Propietario propietario)
         {
             var client = _httpClientFactory.CreateClient("AdminAvionesApi");

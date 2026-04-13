@@ -3,9 +3,18 @@ using ProyectoAdminAviones.Model;
 
 namespace ProyectoAdminAviones.UI.Controllers
 {
+    /// <summary>
+    /// Gestiona las operaciones relacionadas con aviones en la interfaz de usuario,
+    /// permite consultar, buscar, visualizar detalles, crear, editar y cambiar el estado de los aviones.
+    /// </summary>
     public class GestionAvionesController(ServicioApi servicioApis) : Controller
     {
         // GET: GestionAvionesController
+
+        /// <summary>
+        /// Obtiene la lista de aviones y permite filtrarlos por criterios de búsqueda
+        /// como nombre, modelo o matrícula.
+        /// </summary>
         public async Task<ActionResult> Index(string busqueda)
         {
             List<Avion> listaDeAviones = await servicioApis.ObtenerAvionesAsync();
@@ -24,6 +33,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionAvionesController/Detalles/0
+
+        /// <summary>Obtiene los detalles de un avión específico por id.</summary>
         public async Task<ActionResult> Detalles(int id)
         {
             Avion avion = await servicioApis.ObtenerAvionPorIdAsync(id);
@@ -31,12 +42,16 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionAvionesController/Crear
+
+        /// <summary>Retorna la vista para crear un nuevo avión.</summary>
         public ActionResult Crear()
         {
             return View();
         }
 
         // POST: GestionAvionesController/Crear
+
+        /// <summary>Agrega un nuevo avión y redirige al listado principal.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Crear(Avion avion)
@@ -53,6 +68,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // GET: GestionAvionesController/Editar/0
+
+        /// <summary>Obtiene un avión por id para su edición.</summary>
         public async Task<ActionResult> Editar(int id)
         {
             Avion avion = await servicioApis.ObtenerAvionPorIdAsync(id);
@@ -60,6 +77,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // POST: GestionAvionesController/Editar/0
+
+        /// <summary>Actualiza un avión existente y redirige a la vista de detalles.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(Avion avion)
@@ -76,6 +95,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // POST: GestionAvionesController/Activar/0
+
+        /// <summary>Activa un avión por id y redirige al listado principal.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Activar(int IdAvion)
@@ -92,6 +113,8 @@ namespace ProyectoAdminAviones.UI.Controllers
         }
 
         // POST: GestionAvionesController/Desactivar/0
+
+        /// <summary>Desactiva un avión por id y redirige al listado principal.</summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Desactivar(int IdAvion)
