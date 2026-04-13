@@ -10,10 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Cliente HTTP para consumir la API principal con direccion base y clave de acceso.
+var adminAvionesApiConfig = builder.Configuration.GetSection("AdminAvionesApi");
+var urlBase = adminAvionesApiConfig.GetValue<string>("BaseUrl");
+var apiKey = adminAvionesApiConfig.GetValue<string>("ApiKey");
 builder.Services.AddHttpClient("AdminAvionesApi", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7044/");
-    client.DefaultRequestHeaders.Add("X-API-KEY", "123456");
+    client.BaseAddress = new Uri(urlBase);
+    client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
 });
 
 // Servicio de apoyo para centralizar las llamadas a la API desde la interfaz.
