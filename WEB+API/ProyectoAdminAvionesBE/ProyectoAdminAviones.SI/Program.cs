@@ -49,8 +49,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Almacenamiento en memoria (util para pruebas).
+/*builder.Services.AddDbContext<AdminAvionesContext>(options =>
+    options.UseInMemoryDatabase("AdminAvionesDB"));*/
+
+// Almacenamiento en BD azure.
 builder.Services.AddDbContext<AdminAvionesContext>(options =>
-    options.UseInMemoryDatabase("AdminAvionesDB"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Repositorios y servicios de negocio con alcance por peticion.
 builder.Services.AddScoped<IAvionRepository, AvionRepository>();
